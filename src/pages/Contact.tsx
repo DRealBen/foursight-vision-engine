@@ -57,9 +57,9 @@ const Contact = () => {
     {
       icon: <MessageCircle className="w-6 h-6" />,
       title: 'WhatsApp',
-      info: '+1 (555) 123-4567',
+      info: '+234 816 789 4509',
       description: 'Quick chat on WhatsApp',
-      action: 'https://wa.me/15551234567'
+      action: 'https://wa.me/2348167894509'
     },
     {
       icon: <Clock className="w-6 h-6" />,
@@ -281,7 +281,7 @@ const Contact = () => {
                     className="accent-gradient text-accent-foreground hover:shadow-glow smooth-transition"
                   >
                     <a 
-                      href="https://wa.me/15551234567"
+                      href="https://wa.me/2348167894509"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2"
