@@ -52,8 +52,12 @@ const Layout = ({
         <nav className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-2 group">
+            <Link to="/" className="flex items-center space-x-3 group">
               <img src={foursightLogo} alt="FourSight Media & Tech Logo" className="h-12 w-auto smooth-transition group-hover:scale-105" />
+              <div className="hidden sm:block">
+                <div className="text-lg font-bold text-foreground leading-tight">FourSight</div>
+                <div className="text-sm text-muted-foreground font-medium -mt-1">Media & Tech</div>
+              </div>
             </Link>
 
             {/* Desktop Navigation */}
