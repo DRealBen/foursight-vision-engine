@@ -50,9 +50,9 @@ const Contact = () => {
     {
       icon: <Mail className="w-6 h-6" />,
       title: 'Email Us',
-      info: 'hello@foursightmedia.tech',
+      info: 'benedictpraise653@gmail.com',
       description: 'Send us an email anytime',
-      action: 'mailto:hello@foursightmedia.tech'
+      action: 'mailto:benedictpraise653@gmail.com'
     },
     {
       icon: <MessageCircle className="w-6 h-6" />,
@@ -144,7 +144,7 @@ const Contact = () => {
                         required
                         value={formData.email}
                         onChange={handleInputChange}
-                        placeholder="john@example.com"
+                        placeholder="benedictpraise653@gmail.com"
                         className="smooth-transition focus:border-primary"
                       />
                     </div>
