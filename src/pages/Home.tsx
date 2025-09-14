@@ -3,29 +3,37 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Eye, Zap, Target, Palette } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+
 const Home = () => {
-  const services = [{
-    icon: <Palette className="w-8 h-8" />,
-    title: 'Graphic Design',
-    description: 'Professional logos, branding, and visual identity solutions that make your brand unforgettable.',
-    status: 'active'
-  }, {
-    icon: <Eye className="w-8 h-8" />,
-    title: 'Photography',
-    description: 'Stunning visual storytelling through professional photography services.',
-    status: 'coming-soon'
-  }, {
-    icon: <Zap className="w-8 h-8" />,
-    title: 'Web Design',
-    description: 'Modern, responsive websites that convert visitors into customers.',
-    status: 'coming-soon'
-  }, {
-    icon: <Target className="w-8 h-8" />,
-    title: 'Digital Marketing',
-    description: 'Strategic advertising campaigns that reach your target audience effectively.',
-    status: 'coming-soon'
-  }];
-  return <div className="relative">
+  const services = [
+    {
+      icon: <Palette className="w-8 h-8" />,
+      title: 'Graphic Design',
+      description: 'Professional logos, branding, and visual identity solutions that make your brand unforgettable.',
+      status: 'active'
+    },
+    {
+      icon: <Eye className="w-8 h-8" />,
+      title: 'Photography',
+      description: 'Stunning visual storytelling through professional photography services.',
+      status: 'coming-soon'
+    },
+    {
+      icon: <Zap className="w-8 h-8" />,
+      title: 'Web Design',
+      description: 'Modern, responsive websites that convert visitors into customers.',
+      status: 'coming-soon'
+    },
+    {
+      icon: <Target className="w-8 h-8" />,
+      title: 'Digital Marketing',
+      description: 'Strategic advertising campaigns that reach your target audience effectively.',
+      status: 'coming-soon'
+    }
+  ];
+
+  return (
+    <div className="relative">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 hero-gradient"></div>
@@ -33,7 +41,21 @@ const Home = () => {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            
+            <div className="mb-4 animate-fade-in">
+              <h2 className="text-2xl md:text-3xl font-bold text-primary mb-2">
+                FourSight Media & Tech
+              </h2>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in [animation-delay:0.1s]">
+              Turning{' '}
+              <span className="bg-gradient-primary bg-clip-text text-transparent">
+                Vision
+              </span>{' '}
+              into{' '}
+              <span className="bg-gradient-accent bg-clip-text text-transparent">
+                Reality
+              </span>
+            </h1>
             
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 animate-fade-in [animation-delay:0.2s]">
               Where creativity meets technology. We craft stunning visual experiences 
@@ -41,14 +63,23 @@ const Home = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in [animation-delay:0.4s]">
-              <Button asChild size="lg" className="primary-gradient text-primary-foreground font-semibold px-8 py-6 text-lg hover:shadow-glow smooth-transition">
+              <Button 
+                asChild 
+                size="lg" 
+                className="primary-gradient text-primary-foreground font-semibold px-8 py-6 text-lg hover:shadow-glow smooth-transition"
+              >
                 <Link to="/contact" className="flex items-center gap-2">
                   Start Your Project
                   <ArrowRight size={20} />
                 </Link>
               </Button>
               
-              <Button asChild variant="outline" size="lg" className="font-semibold px-8 py-6 text-lg hover:bg-primary hover:text-primary-foreground smooth-transition">
+              <Button 
+                asChild 
+                variant="outline" 
+                size="lg"
+                className="font-semibold px-8 py-6 text-lg hover:bg-primary hover:text-primary-foreground smooth-transition"
+              >
                 <Link to="/portfolio">
                   View Our Work
                 </Link>
@@ -76,18 +107,31 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service, index) => <Card key={service.title} className={`relative group hover:shadow-card smooth-transition animate-fade-in card-shadow ${service.status === 'active' ? 'border-primary/20 hover:border-primary/40' : 'border-border hover:border-accent/40'}`} style={{
-            animationDelay: `${index * 0.1}s`
-          }}>
+            {services.map((service, index) => (
+              <Card 
+                key={service.title}
+                className={`relative group hover:shadow-card smooth-transition animate-fade-in card-shadow ${
+                  service.status === 'active' 
+                    ? 'border-primary/20 hover:border-primary/40' 
+                    : 'border-border hover:border-accent/40'
+                }`}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
                 <CardHeader className="text-center">
-                  <div className={`mx-auto mb-4 p-3 rounded-full w-fit ${service.status === 'active' ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'}`}>
+                  <div className={`mx-auto mb-4 p-3 rounded-full w-fit ${
+                    service.status === 'active' 
+                      ? 'bg-primary/10 text-primary' 
+                      : 'bg-muted text-muted-foreground'
+                  }`}>
                     {service.icon}
                   </div>
                   <CardTitle className="text-xl mb-2">
                     {service.title}
-                    {service.status === 'coming-soon' && <span className="ml-2 px-2 py-1 text-xs bg-accent/20 text-accent rounded-full font-normal">
+                    {service.status === 'coming-soon' && (
+                      <span className="ml-2 px-2 py-1 text-xs bg-accent/20 text-accent rounded-full font-normal">
                         Coming Soon
-                      </span>}
+                      </span>
+                    )}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -96,8 +140,11 @@ const Home = () => {
                   </CardDescription>
                 </CardContent>
                 
-                {service.status === 'active' && <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-5 rounded-lg smooth-transition"></div>}
-              </Card>)}
+                {service.status === 'active' && (
+                  <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-5 rounded-lg smooth-transition"></div>
+                )}
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -113,7 +160,11 @@ const Home = () => {
               Let's collaborate to create something extraordinary. Get in touch today 
               and let's discuss how we can bring your ideas to life.
             </p>
-            <Button asChild size="lg" className="primary-gradient text-primary-foreground font-semibold px-8 py-6 text-lg hover:shadow-glow smooth-transition">
+            <Button 
+              asChild 
+              size="lg"
+              className="primary-gradient text-primary-foreground font-semibold px-8 py-6 text-lg hover:shadow-glow smooth-transition"
+            >
               <Link to="/contact" className="flex items-center gap-2">
                 Get Started Today
                 <ArrowRight size={20} />
@@ -122,6 +173,8 @@ const Home = () => {
           </div>
         </div>
       </section>
-    </div>;
+    </div>
+  );
 };
+
 export default Home;
