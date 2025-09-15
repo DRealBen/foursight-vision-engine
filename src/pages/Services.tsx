@@ -39,7 +39,7 @@ const Services = () => {
         'Commercial Shoots',
         'Photo Editing & Retouching'
       ],
-      launchDate: 'Q2 2024'
+      launchDate: 'Q2 2026'
     },
     {
       icon: <Monitor className="w-8 h-8" />,
@@ -52,7 +52,7 @@ const Services = () => {
         'CMS Integration',
         'SEO Optimization'
       ],
-      launchDate: 'Q3 2024'
+      launchDate: 'Q3 2026'
     },
     {
       icon: <Megaphone className="w-8 h-8" />,
@@ -65,7 +65,7 @@ const Services = () => {
         'Brand Strategy',
         'Analytics & Reporting'
       ],
-      launchDate: 'Q4 2024'
+      launchDate: 'Q4 2026'
     }
   ];
 

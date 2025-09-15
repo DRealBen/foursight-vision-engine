@@ -17,7 +17,7 @@ const Portfolio = () => {
       client: 'TechFlow Solutions',
       description: 'Complete brand identity design including logo, color palette, and brand guidelines for a cutting-edge tech startup.',
       image: '/api/placeholder/600/400',
-      year: '2024',
+      year: '2025',
       tags: ['Logo Design', 'Branding', 'Identity']
     },
     {
@@ -27,7 +27,7 @@ const Portfolio = () => {
       client: 'Bella Vista Restaurant',
       description: 'Comprehensive branding package including logo, menu design, and marketing materials for an upscale Italian restaurant.',
       image: '/api/placeholder/600/400',
-      year: '2024',
+      year: '2025',
       tags: ['Branding', 'Print Design', 'Menu']
     },
     {
@@ -37,7 +37,7 @@ const Portfolio = () => {
       client: 'Fitness First Gym',
       description: 'Dynamic social media graphics and campaign visuals to promote new fitness programs and boost engagement.',
       image: '/api/placeholder/600/400',
-      year: '2024',
+      year: '2025',
       tags: ['Social Media', 'Digital Design', 'Marketing']
     },
     {
@@ -47,17 +47,17 @@ const Portfolio = () => {
       client: 'EcoLife Products',
       description: 'Sustainable packaging design for a line of eco-friendly household products, emphasizing green values.',
       image: '/api/placeholder/600/400',
-      year: '2024',
+      year: '2025',
       tags: ['Packaging', 'Print Design', 'Sustainability']
     },
     {
       id: 5,
       title: 'Corporate Event Materials',
       category: 'print',
-      client: 'Global Summit 2024',
+      client: 'Global Summit 2025',
       description: 'Complete event branding package including banners, brochures, name badges, and presentation templates.',
       image: '/api/placeholder/600/400',
-      year: '2024',
+      year: '2025',
       tags: ['Event Design', 'Print', 'Corporate']
     },
     {
@@ -67,7 +67,7 @@ const Portfolio = () => {
       client: 'Artisan Crafts Co.',
       description: 'Modern, user-friendly e-commerce website design with focus on showcasing handmade products.',
       image: '/api/placeholder/600/400',
-      year: '2024',
+      year: '2025',
       tags: ['Web Design', 'E-commerce', 'UI/UX']
     }
   ];
