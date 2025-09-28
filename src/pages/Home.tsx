@@ -22,13 +22,13 @@ const Home = () => {
       icon: <Zap className="w-8 h-8" />,
       title: 'Web Design',
       description: 'Modern, responsive websites that convert visitors into customers.',
-      status: 'coming-soon'
+      status: 'active'
     },
     {
       icon: <Target className="w-8 h-8" />,
       title: 'Digital Marketing',
       description: 'Strategic advertising campaigns that reach your target audience effectively.',
-      status: 'coming-soon'
+      status: 'active'
     }
   ];
 
