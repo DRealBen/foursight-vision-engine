@@ -52,7 +52,7 @@ const Services = () => {
         'CMS Integration',
         'SEO Optimization'
       ],
-      launchDate: 'Q3 2026'
+      launchDate: 'Available Now'
     },
     {
       icon: <Megaphone className="w-8 h-8" />,
@@ -65,7 +65,7 @@ const Services = () => {
         'Brand Strategy',
         'Analytics & Reporting'
       ],
-      launchDate: 'Q4 2026'
+      launchDate: 'Available Now'
     }
   ];
 
