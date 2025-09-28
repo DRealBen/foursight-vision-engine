@@ -95,14 +95,6 @@ const Services = () => {
 
         {/* Current Services */}
         <section className="mb-20 animate-fade-in [animation-delay:0.2s]">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Our <span className="text-primary">Services</span>
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Professional services available now to elevate your business
-            </p>
-          </div>
 
           <div className="space-y-16">
             {currentServices.map((service, serviceIndex) => (
