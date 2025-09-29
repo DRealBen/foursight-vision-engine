@@ -1,10 +1,49 @@
-import React, { useState } from 'react';
-import { MessageCircle, Mail, Clock, MapPin, Send, CheckCircle } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { MessageCircle, Mail, Clock, MapPin, Send, CheckCircle, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { z } from 'zod';
+
+// Security: Input validation schema
+const contactSchema = z.object({
+  name: z.string()
+    .trim()
+    .min(2, { message: "Name must be at least 2 characters" })
+    .max(100, { message: "Name must be less than 100 characters" })
+    .regex(/^[a-zA-Z\s'-]+$/, { message: "Name contains invalid characters" }),
+  email: z.string()
+    .trim()
+    .email({ message: "Invalid email address" })
+    .max(255, { message: "Email must be less than 255 characters" }),
+  company: z.string()
+    .trim()
+    .max(150, { message: "Company name must be less than 150 characters" })
+    .optional()
+    .transform(val => val === '' ? undefined : val),
+  service: z.string()
+    .min(1, { message: "Please select a service" }),
+  message: z.string()
+    .trim()
+    .min(10, { message: "Message must be at least 10 characters" })
+    .max(2000, { message: "Message must be less than 2000 characters" })
+});
+
+// Security: Input sanitization utility
+const sanitizeInput = (input: string): string => {
+  return input
+    .replace(/[<>]/g, '') // Remove potential HTML tags
+    .replace(/javascript:/gi, '') // Remove javascript: protocol
+    .replace(/on\w+=/gi, '') // Remove event handlers
+    .trim();
+};
+
+// Security: Phone number validation for WhatsApp URLs
+const sanitizePhoneNumber = (phone: string): string => {
+  return phone.replace(/[^\d+]/g, '').substring(0, 15); // Keep only digits and +, max 15 chars
+};
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,35 +54,93 @@ const Contact = () => {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const lastSubmissionRef = useRef<number>(0);
   const { toast } = useToast();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
+    
+    // Security: Sanitize input and clear previous errors
+    const sanitizedValue = sanitizeInput(value);
+    
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: sanitizedValue
     }));
+    
+    // Clear error for this field when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    
+    // Security: Rate limiting - prevent spam submissions
+    const now = Date.now();
+    if (now - lastSubmissionRef.current < 5000) { // 5 second throttle
       toast({
-        title: "Message Sent Successfully!",
-        description: "Thank you for reaching out. We'll get back to you within 24 hours.",
+        title: "Too Fast!",
+        description: "Please wait a moment before submitting another message.",
+        variant: "destructive",
       });
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        service: '',
-        message: '',
-      });
-    }, 2000);
+      return;
+    }
+    
+    // Security: Validate form data
+    try {
+      const validatedData = contactSchema.parse(formData);
+      setErrors({});
+      setIsSubmitting(true);
+      lastSubmissionRef.current = now;
+
+      // Security: Additional sanitization before processing
+      const sanitizedData = {
+        ...validatedData,
+        name: sanitizeInput(validatedData.name),
+        email: sanitizeInput(validatedData.email),
+        company: validatedData.company ? sanitizeInput(validatedData.company) : '',
+        message: sanitizeInput(validatedData.message)
+      };
+
+      // Simulate form submission with validated data
+      setTimeout(() => {
+        setIsSubmitting(false);
+        toast({
+          title: "Message Sent Successfully!",
+          description: "Thank you for reaching out. We'll get back to you within 24 hours.",
+        });
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          service: '',
+          message: '',
+        });
+      }, 2000);
+      
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const fieldErrors: Record<string, string> = {};
+        error.errors.forEach((err) => {
+          if (err.path[0]) {
+            fieldErrors[err.path[0] as string] = err.message;
+          }
+        });
+        setErrors(fieldErrors);
+        
+        toast({
+          title: "Please Fix Form Errors",
+          description: "Check the highlighted fields and try again.",
+          variant: "destructive",
+        });
+      }
+    }
   };
 
   const contactInfo = [
@@ -59,7 +156,7 @@ const Contact = () => {
       title: 'WhatsApp',
       info: '+234 816 789 4509',
       description: 'Quick chat on WhatsApp',
-      action: 'https://wa.me/2348167894509'
+      action: `https://wa.me/${sanitizePhoneNumber('2348167894509')}`
     },
     {
       icon: <Clock className="w-6 h-6" />,
@@ -127,11 +224,19 @@ const Contact = () => {
                         name="name"
                         type="text"
                         required
+                        maxLength={100}
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="John Doe"
-                        className="smooth-transition focus:border-primary"
+                        className={`smooth-transition focus:border-primary ${errors.name ? 'border-destructive' : ''}`}
+                        aria-describedby={errors.name ? 'name-error' : undefined}
                       />
+                      {errors.name && (
+                        <p id="name-error" className="text-sm text-destructive mt-1 flex items-center gap-1">
+                          <AlertTriangle className="w-4 h-4" />
+                          {errors.name}
+                        </p>
+                      )}
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-semibold mb-2 text-foreground">
@@ -142,11 +247,19 @@ const Contact = () => {
                         name="email"
                         type="email"
                         required
+                        maxLength={255}
                         value={formData.email}
                         onChange={handleInputChange}
-                        placeholder="benedictpraise653@gmail.com"
-                        className="smooth-transition focus:border-primary"
+                        placeholder="your.email@example.com"
+                        className={`smooth-transition focus:border-primary ${errors.email ? 'border-destructive' : ''}`}
+                        aria-describedby={errors.email ? 'email-error' : undefined}
                       />
+                      {errors.email && (
+                        <p id="email-error" className="text-sm text-destructive mt-1 flex items-center gap-1">
+                          <AlertTriangle className="w-4 h-4" />
+                          {errors.email}
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -159,11 +272,19 @@ const Contact = () => {
                         id="company"
                         name="company"
                         type="text"
+                        maxLength={150}
                         value={formData.company}
                         onChange={handleInputChange}
                         placeholder="Your Company"
-                        className="smooth-transition focus:border-primary"
+                        className={`smooth-transition focus:border-primary ${errors.company ? 'border-destructive' : ''}`}
+                        aria-describedby={errors.company ? 'company-error' : undefined}
                       />
+                      {errors.company && (
+                        <p id="company-error" className="text-sm text-destructive mt-1 flex items-center gap-1">
+                          <AlertTriangle className="w-4 h-4" />
+                          {errors.company}
+                        </p>
+                      )}
                     </div>
                     <div>
                       <label htmlFor="service" className="block text-sm font-semibold mb-2 text-foreground">
@@ -175,7 +296,8 @@ const Contact = () => {
                         required
                         value={formData.service}
                         onChange={handleInputChange}
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background smooth-transition focus:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                        className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background smooth-transition focus:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${errors.service ? 'border-destructive' : ''}`}
+                        aria-describedby={errors.service ? 'service-error' : undefined}
                       >
                         <option value="">Select a service</option>
                         {services.map((service) => (
@@ -184,6 +306,12 @@ const Contact = () => {
                           </option>
                         ))}
                       </select>
+                      {errors.service && (
+                        <p id="service-error" className="text-sm text-destructive mt-1 flex items-center gap-1">
+                          <AlertTriangle className="w-4 h-4" />
+                          {errors.service}
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -195,12 +323,27 @@ const Contact = () => {
                       id="message"
                       name="message"
                       required
+                      maxLength={2000}
                       value={formData.message}
                       onChange={handleInputChange}
                       placeholder="Tell us about your project, goals, timeline, and any specific requirements..."
                       rows={6}
-                      className="smooth-transition focus:border-primary resize-none"
+                      className={`smooth-transition focus:border-primary resize-none ${errors.message ? 'border-destructive' : ''}`}
+                      aria-describedby={errors.message ? 'message-error' : undefined}
                     />
+                    <div className="flex justify-between items-center mt-1">
+                      {errors.message ? (
+                        <p id="message-error" className="text-sm text-destructive flex items-center gap-1">
+                          <AlertTriangle className="w-4 h-4" />
+                          {errors.message}
+                        </p>
+                      ) : (
+                        <div></div>
+                      )}
+                      <p className="text-xs text-muted-foreground">
+                        {formData.message.length}/2000
+                      </p>
+                    </div>
                   </div>
 
                   <Button
@@ -281,7 +424,7 @@ const Contact = () => {
                     className="accent-gradient text-accent-foreground hover:shadow-glow smooth-transition"
                   >
                     <a 
-                      href="https://wa.me/2348167894509"
+                      href={`https://wa.me/${sanitizePhoneNumber('2348167894509')}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2"
