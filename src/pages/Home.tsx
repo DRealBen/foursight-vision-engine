@@ -13,12 +13,6 @@ const Home = () => {
       status: 'active'
     },
     {
-      icon: <Eye className="w-8 h-8" />,
-      title: 'Photography',
-      description: 'Stunning visual storytelling through professional photography services.',
-      status: 'coming-soon'
-    },
-    {
       icon: <Zap className="w-8 h-8" />,
       title: 'Web Design',
       description: 'Modern, responsive websites that convert visitors into customers.',
@@ -29,6 +23,12 @@ const Home = () => {
       title: 'Digital Marketing',
       description: 'Strategic advertising campaigns that reach your target audience effectively.',
       status: 'active'
+    },
+    {
+      icon: <Eye className="w-8 h-8" />,
+      title: 'Photography',
+      description: 'Stunning visual storytelling through professional photography services.',
+      status: 'coming-soon'
     }
   ];
 
