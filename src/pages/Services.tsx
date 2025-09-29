@@ -60,12 +60,9 @@ const Services = () => {
       ],
       pricing: 'Starting from $299/month',
       deliveryTime: '2-4 weeks setup'
-    }
-  ];
-
-  const upcomingServices = [
+    },
     {
-      icon: <Eye className="w-8 h-8" />,
+      icon: <Eye className="w-12 h-12" />,
       title: 'Photography',
       description: 'Professional photography services for portraits, events, products, and commercial needs.',
       features: [
@@ -75,9 +72,12 @@ const Services = () => {
         'Commercial Shoots',
         'Photo Editing & Retouching'
       ],
-      launchDate: 'Q2 2026'
+      pricing: 'Starting from $199',
+      deliveryTime: '1-2 weeks'
     }
   ];
+
+  const upcomingServices = [];
 
   return (
     <div className="py-20">
@@ -166,71 +166,6 @@ const Services = () => {
           </div>
         </section>
 
-        {/* Upcoming Services */}
-        <section className="animate-fade-in [animation-delay:0.4s]">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Coming <span className="text-accent">Soon</span>
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Additional services we're developing to serve you better
-            </p>
-          </div>
-
-          <div className="flex justify-center">
-            <Card 
-              className="group hover:shadow-card smooth-transition border-border hover:border-accent/40 card-shadow animate-fade-in"
-              style={{ animationDelay: '0.5s' }}
-            >
-              <CardHeader>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="p-3 bg-muted text-muted-foreground rounded-full group-hover:bg-accent/10 group-hover:text-accent smooth-transition">
-                    <Eye className="w-8 h-8" />
-                  </div>
-                  <Badge variant="outline" className="text-xs">
-                    Q2 2026
-                  </Badge>
-                </div>
-                
-                <CardTitle className="text-xl mb-2">
-                  Photography
-                </CardTitle>
-                
-                <CardDescription>
-                  Professional photography services for portraits, events, products, and commercial needs.
-                </CardDescription>
-              </CardHeader>
-              
-              <CardContent>
-                <h4 className="font-semibold mb-3">Features:</h4>
-                <ul className="space-y-2">
-                  <li className="flex items-center gap-2 text-sm">
-                    <div className="w-1.5 h-1.5 bg-accent rounded-full"></div>
-                    Portrait Photography
-                  </li>
-                  <li className="flex items-center gap-2 text-sm">
-                    <div className="w-1.5 h-1.5 bg-accent rounded-full"></div>
-                    Event Photography
-                  </li>
-                  <li className="flex items-center gap-2 text-sm">
-                    <div className="w-1.5 h-1.5 bg-accent rounded-full"></div>
-                    Product Photography
-                  </li>
-                  <li className="flex items-center gap-2 text-sm">
-                    <div className="w-1.5 h-1.5 bg-accent rounded-full"></div>
-                    Commercial Shoots
-                  </li>
-                  <li className="flex items-center gap-2 text-sm">
-                    <div className="w-1.5 h-1.5 bg-accent rounded-full"></div>
-                    Photo Editing & Retouching
-                  </li>
-                </ul>
-              </CardContent>
-              
-              <div className="absolute inset-0 bg-gradient-accent opacity-0 group-hover:opacity-5 rounded-lg smooth-transition"></div>
-            </Card>
-          </div>
-        </section>
 
         {/* CTA Section */}
         <section className="mt-20 text-center animate-fade-in [animation-delay:0.6s]">
