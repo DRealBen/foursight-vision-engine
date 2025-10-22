@@ -179,6 +179,7 @@ const Contact = () => {
     'Logo & Branding',
     'Print Design',
     'Social Media Graphics',
+    'Video Editing',
     'Web Design (Coming Soon)',
     'Photography (Coming Soon)',
     'Digital Marketing (Coming Soon)',

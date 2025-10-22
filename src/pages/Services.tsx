@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  Palette, Eye, Monitor, Megaphone, 
+  Palette, Eye, Monitor, Megaphone, Film,
   Check, Clock, ArrowRight, Star 
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -60,6 +60,23 @@ const Services = () => {
       ],
       pricing: 'Starting from $299/month',
       deliveryTime: '2-4 weeks setup'
+    },
+    {
+      icon: <Film className="w-12 h-12" />,
+      title: 'Video Editing',
+      description: 'Professional video editing and post-production services that bring your stories to life.',
+      features: [
+        'Video Editing & Cutting',
+        'Color Grading',
+        'Motion Graphics',
+        'Sound Design & Mixing',
+        'Visual Effects (VFX)',
+        'Social Media Video Content',
+        'YouTube Video Production',
+        'Commercial Video Editing'
+      ],
+      pricing: 'Starting from $199',
+      deliveryTime: '5-10 business days'
     }
   ];
 

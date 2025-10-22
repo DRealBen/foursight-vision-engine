@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Eye, Zap, Target, Palette } from 'lucide-react';
+import { ArrowRight, Eye, Zap, Target, Palette, Film } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
@@ -22,6 +22,12 @@ const Home = () => {
       icon: <Target className="w-8 h-8" />,
       title: 'Digital Marketing',
       description: 'Strategic advertising campaigns that reach your target audience effectively.',
+      status: 'active'
+    },
+    {
+      icon: <Film className="w-8 h-8" />,
+      title: 'Video Editing',
+      description: 'Professional video editing and post-production services that bring your stories to life.',
       status: 'active'
     },
     {
@@ -101,7 +107,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             {services.map((service, index) => (
               <Card 
                 key={service.title}
