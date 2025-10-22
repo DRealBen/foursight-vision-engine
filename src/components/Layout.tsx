@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import foursightLogo from '@/assets/foursight-logo.png';
+import foursightLogo from '@/assets/foursight-ng-logo.png';
 const Layout = ({
   children
 }: {
@@ -53,10 +53,9 @@ const Layout = ({
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-3 group">
-              <img src={foursightLogo} alt="FourSight Media & Tech Logo" className="h-12 w-auto smooth-transition group-hover:scale-105" />
+              <img src={foursightLogo} alt="FourSight NG Logo" className="h-12 w-auto smooth-transition group-hover:scale-105" />
               <div className="hidden sm:block">
-                <div className="text-xl font-bold text-primary leading-tight">FourSight</div>
-                <div className="text-base text-muted-foreground font-medium -mt-1">Media & Tech</div>
+                <div className="text-xl font-bold text-primary leading-tight">FourSight NG</div>
               </div>
             </Link>
 
@@ -106,7 +105,7 @@ const Layout = ({
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Company Info */}
             <div className="md:col-span-2">
-              <img src={foursightLogo} alt="FourSight Media & Tech" className="h-8 w-auto mb-4 opacity-90" style={{
+              <img src={foursightLogo} alt="FourSight Nigeria" className="h-8 w-auto mb-4 opacity-90" style={{
               filter: 'brightness(0) invert(1)'
             }} />
               <p className="text-neutral-foreground/80 mb-4 max-w-md">
@@ -137,7 +136,7 @@ const Layout = ({
           </div>
 
           <div className="border-t border-neutral-foreground/20 mt-8 pt-8 text-center text-neutral-foreground/60">
-            <p>© 2025 FourSight Media & Tech. All rights reserved.</p>
+            <p>© 2025 FourSight Nigeria. All rights reserved.</p>
           </div>
         </div>
       </footer>
