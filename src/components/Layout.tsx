@@ -53,7 +53,7 @@ const Layout = ({
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-3 group">
-              <img src={foursightLogo} alt="FourSight NG Logo" className="h-12 w-auto smooth-transition group-hover:scale-105" />
+              <img src={foursightLogo} alt="FourSight NG Logo" className="h-16 w-auto smooth-transition group-hover:scale-105" />
               <div className="hidden sm:block">
                 <div className="text-xl font-bold text-primary leading-tight">FourSight NG</div>
               </div>
@@ -105,7 +105,7 @@ const Layout = ({
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Company Info */}
             <div className="md:col-span-2">
-              <img src={foursightLogo} alt="FourSight Nigeria" className="h-8 w-auto mb-4 opacity-90" style={{
+              <img src={foursightLogo} alt="FourSight Nigeria" className="h-10 w-auto mb-4 opacity-90" style={{
               filter: 'brightness(0) invert(1)'
             }} />
               <p className="text-neutral-foreground/80 mb-4 max-w-md">
