@@ -56,7 +56,10 @@ const Home = () => {
               <span className="text-foreground">
                 Look
               </span>{' '}
-              - we Designed{' '}
+              - we{' '}
+              <span className="bg-gradient-primary bg-clip-text text-transparent">
+                Designed
+              </span>{' '}
               <span className="text-foreground">
                 it
               </span>
