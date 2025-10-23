@@ -66,8 +66,7 @@ const Home = () => {
             </h1>
             
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 animate-fade-in [animation-delay:0.2s]">
-              Where creativity meets technology. We craft stunning visual experiences 
-              that elevate your brand and captivate your audience.
+              We blend art and innovation to build visuals that don't just look good; they speak to your audience.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in [animation-delay:0.4s]">
