@@ -48,13 +48,13 @@ const Home = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in [animation-delay:0.1s]">
-              Turning{' '}
+              The Future has a{' '}
               <span className="bg-gradient-primary bg-clip-text text-transparent">
-                Vision
+                Look
               </span>{' '}
-              into{' '}
+              - we{' '}
               <span className="bg-gradient-accent bg-clip-text text-transparent">
-                Reality
+                Designed it
               </span>
             </h1>
             
