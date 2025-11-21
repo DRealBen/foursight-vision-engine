@@ -53,7 +53,7 @@ const Layout = ({
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-3 group">
-              <img src={foursightLogo} alt="FourSight NG Logo" className="h-16 w-auto smooth-transition group-hover:scale-105" />
+              <img alt="FourSight NG Logo" className="h-16 w-auto smooth-transition group-hover:scale-105" src="/lovable-uploads/54ade333-f6dd-46ed-8d16-83d2810e0c50.png" />
               <div className="hidden sm:block">
                 <div className="text-xl font-bold text-primary leading-tight">FourSight NG</div>
               </div>
