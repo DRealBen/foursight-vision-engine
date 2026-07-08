@@ -26,7 +26,7 @@ const Portfolio = () => {
       client: 'Glowera',
       description: 'Complete brand identity design for a beauty brand, including logo, color palette, typography system, brand pattern, and mockup application across apparel, packaging, print, and outdoor advertising.',
       image: gloweraBrandBoard,
-      gallery: [gloweraBrandBoard],
+      gallery: [gloweraBrandBoard, gloweraBillboard, gloweraBottle, gloweraBucketHat, gloweraHoodie, gloweraTshirt, gloweraShoppingBag, gloweraModel],
       year: '2025',
       tags: ['Branding', 'Logo Design', 'Print Design', 'Identity']
     },
