@@ -6,6 +6,13 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import ProjectDetailModal from '@/components/ProjectDetailModal';
 import gloweraBrandBoard from '@/assets/glowera-brand-board.png';
+import gloweraBillboard from '@/assets/glowera-billboard.png';
+import gloweraBottle from '@/assets/glowera-bottle.png';
+import gloweraBucketHat from '@/assets/glowera-bucket-hat.png';
+import gloweraHoodie from '@/assets/glowera-hoodie.png';
+import gloweraTshirt from '@/assets/glowera-tshirt.png';
+import gloweraShoppingBag from '@/assets/glowera-shopping-bag.png';
+import gloweraModel from '@/assets/glowera-model.png';
 
 const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -19,7 +26,7 @@ const Portfolio = () => {
       client: 'Glowera',
       description: 'Complete brand identity design for a beauty brand, including logo, color palette, typography system, brand pattern, and mockup application across apparel, packaging, print, and outdoor advertising.',
       image: gloweraBrandBoard,
-      gallery: [gloweraBrandBoard],
+      gallery: [gloweraBrandBoard, gloweraBillboard, gloweraBottle, gloweraBucketHat, gloweraHoodie, gloweraTshirt, gloweraShoppingBag, gloweraModel],
       year: '2025',
       tags: ['Branding', 'Logo Design', 'Print Design', 'Identity']
     },
