@@ -4,21 +4,24 @@ import { ArrowRight, ExternalLink, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import ProjectDetailModal from '@/components/ProjectDetailModal';
+import gloweraBrandBoard from '@/assets/glowera-brand-board.png';
 
 const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [openProjectId, setOpenProjectId] = useState<number | null>(null);
 
-  // Mock portfolio data - these would be replaced with actual work
   const portfolioItems = [
     {
       id: 1,
-      title: 'Modern Tech Startup Logo',
+      title: 'Glowera Brand Identity',
       category: 'branding',
-      client: 'TechFlow Solutions',
-      description: 'Complete brand identity design including logo, color palette, and brand guidelines for a cutting-edge tech startup.',
-      image: '/api/placeholder/600/400',
+      client: 'Glowera',
+      description: 'Complete brand identity design for a beauty brand, including logo, color palette, typography system, brand pattern, and mockup application across apparel, packaging, print, and outdoor advertising.',
+      image: gloweraBrandBoard,
+      gallery: [gloweraBrandBoard],
       year: '2025',
-      tags: ['Logo Design', 'Branding', 'Identity']
+      tags: ['Branding', 'Logo Design', 'Print Design', 'Identity']
     },
     {
       id: 2,
@@ -79,9 +82,13 @@ const Portfolio = () => {
     { id: 'digital', name: 'Digital Design', count: portfolioItems.filter(item => item.category === 'digital').length }
   ];
 
-  const filteredItems = selectedCategory === 'all' 
-    ? portfolioItems 
+  const filteredItems = selectedCategory === 'all'
+    ? portfolioItems
     : portfolioItems.filter(item => item.category === selectedCategory);
+
+  const activeProject = portfolioItems.find(p => p.id === openProjectId);
+
+  const isRealImage = (src: string) => src && !src.startsWith('/api/placeholder');
 
   return (
     <div className="py-20">
@@ -92,7 +99,7 @@ const Portfolio = () => {
             Our <span className="text-primary">Portfolio</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Explore our latest work and see how we've helped businesses transform their visual identity 
+            Explore our latest work and see how we've helped businesses transform their visual identity
             and achieve their creative goals.
           </p>
         </div>
@@ -105,14 +112,14 @@ const Portfolio = () => {
               variant={selectedCategory === category.id ? "default" : "outline"}
               onClick={() => setSelectedCategory(category.id)}
               className={`smooth-transition ${
-                selectedCategory === category.id 
-                  ? 'primary-gradient text-primary-foreground shadow-glow' 
+                selectedCategory === category.id
+                  ? 'primary-gradient text-primary-foreground shadow-glow'
                   : 'hover:border-primary hover:text-primary'
               }`}
             >
               {category.name}
-              <Badge 
-                variant="secondary" 
+              <Badge
+                variant="secondary"
                 className="ml-2 text-xs"
               >
                 {category.count}
@@ -124,23 +131,39 @@ const Portfolio = () => {
         {/* Portfolio Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {filteredItems.map((item, index) => (
-            <Card 
+            <Card
               key={item.id}
               className="group overflow-hidden hover:shadow-card smooth-transition border-border hover:border-primary/20 card-shadow animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="relative overflow-hidden">
-                <div className="aspect-[4/3] bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
-                  <Eye className="w-12 h-12 text-muted-foreground" />
+                <div className="aspect-[4/3] bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center relative">
+                  {isRealImage(item.image) ? (
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  ) : (
+                    <Eye className="w-12 h-12 text-muted-foreground" />
+                  )}
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 smooth-transition flex items-center justify-center">
-                    <Button size="sm" variant="outline" className="bg-white/90 text-black hover:bg-white">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="bg-white/90 text-black hover:bg-white"
+                      onClick={() => {
+                        if (item.id === 1) setOpenProjectId(1);
+                      }}
+                    >
                       <ExternalLink size={16} className="mr-2" />
                       View Project
                     </Button>
                   </div>
                 </div>
               </div>
-              
+
               <CardContent className="p-6">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex-1">
@@ -153,16 +176,16 @@ const Portfolio = () => {
                     {item.year}
                   </Badge>
                 </div>
-                
+
                 <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
                   {item.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-2">
                   {item.tags.map((tag) => (
-                    <Badge 
-                      key={tag} 
-                      variant="secondary" 
+                    <Badge
+                      key={tag}
+                      variant="secondary"
                       className="text-xs px-2 py-1"
                     >
                       {tag}
@@ -200,8 +223,8 @@ const Portfolio = () => {
               Let's collaborate to bring your vision to life. Every great project starts with a conversation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                asChild 
+              <Button
+                asChild
                 size="lg"
                 className="primary-gradient text-primary-foreground font-semibold hover:shadow-glow smooth-transition"
               >
@@ -210,9 +233,9 @@ const Portfolio = () => {
                   <ArrowRight size={20} />
                 </Link>
               </Button>
-              <Button 
-                asChild 
-                variant="outline" 
+              <Button
+                asChild
+                variant="outline"
                 size="lg"
                 className="hover:border-primary hover:text-primary smooth-transition"
               >
@@ -222,6 +245,19 @@ const Portfolio = () => {
           </div>
         </section>
       </div>
+
+      <ProjectDetailModal
+        open={openProjectId !== null}
+        onOpenChange={(open) => { if (!open) setOpenProjectId(null); }}
+        project={activeProject ? {
+          title: activeProject.title,
+          client: activeProject.client,
+          year: activeProject.year,
+          description: activeProject.description,
+          tags: activeProject.tags,
+          gallery: (activeProject as any).gallery ?? [activeProject.image],
+        } : null}
+      />
     </div>
   );
 };
