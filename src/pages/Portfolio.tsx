@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import ProjectDetailModal from '@/components/ProjectDetailModal';
+import Seo from '@/components/Seo';
 import gloweraBrandBoard from '@/assets/glowera-brand-board.png';
 import gloweraBillboard from '@/assets/glowera-billboard.png';
 import gloweraBottle from '@/assets/glowera-bottle.png';
@@ -99,6 +100,17 @@ const Portfolio = () => {
 
   return (
     <div className="py-20">
+      <Seo
+        title="Portfolio — Brand Identity & Design Work | FourSight"
+        description="Selected FourSight projects: brand identity, logo design, and creative work including the Glowera beauty brand identity system."
+        path="/portfolio"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: 'FourSight Portfolio',
+          about: 'Brand identity, logo design, and creative work by FourSight.',
+        }}
+      />
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">

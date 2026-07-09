@@ -1,0 +1,13 @@
+# FourSight
+
+> FourSight is a creative studio offering graphic design, web design, video editing, and digital marketing — turning vision into reality for modern businesses.
+
+FourSight helps brands build visual identity, ship modern websites, produce polished video, and run marketing campaigns that reach the right audience.
+
+## Pages
+
+- [Home](/): Overview of FourSight's services and creative approach.
+- [Services](/services): Graphic design, web design, video editing, and digital marketing offerings with pricing and delivery times.
+- [Portfolio](/portfolio): Showcase of brand identity, logo design, and creative work including the Glowera brand identity project.
+- [About](/about): Studio values, vision, and approach to creative collaboration.
+- [Contact](/contact): Get in touch to start a project (email and WhatsApp).

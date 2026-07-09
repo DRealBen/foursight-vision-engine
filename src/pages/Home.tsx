@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Eye, Zap, Target, Palette, Film } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import Seo from '@/components/Seo';
 
 const Home = () => {
   const services = [
@@ -40,6 +41,11 @@ const Home = () => {
 
   return (
     <div className="relative">
+      <Seo
+        title="FourSight — Creative Studio for Design, Web & Video"
+        description="FourSight turns your vision into reality with graphic design, web design, video editing, and digital marketing for modern businesses."
+        path="/"
+      />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 hero-gradient"></div>
