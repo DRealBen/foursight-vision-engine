@@ -53,9 +53,9 @@ const Layout = ({
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-3 group">
-              <img alt="FourSight NG Logo" className="h-16 w-auto smooth-transition group-hover:scale-105" src="/lovable-uploads/54ade333-f6dd-46ed-8d16-83d2810e0c50.png" />
+              <img alt="FourSight Logo" className="h-16 w-auto smooth-transition group-hover:scale-105" src="/lovable-uploads/54ade333-f6dd-46ed-8d16-83d2810e0c50.png" />
               <div className="hidden sm:block">
-                <div className="text-xl font-bold text-primary leading-tight">FourSight NG</div>
+                <div className="text-xl font-bold text-primary leading-tight">FourSight</div>
               </div>
             </Link>
 
@@ -105,7 +105,7 @@ const Layout = ({
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Company Info */}
             <div className="md:col-span-2">
-              <img src={foursightLogo} alt="FourSight Nigeria" className="h-10 w-auto mb-4 opacity-90" style={{
+              <img src={foursightLogo} alt="FourSight" className="h-10 w-auto mb-4 opacity-90" style={{
               filter: 'brightness(0) invert(1)'
             }} />
               <p className="text-neutral-foreground/80 mb-4 max-w-md">
@@ -136,7 +136,7 @@ const Layout = ({
           </div>
 
           <div className="border-t border-neutral-foreground/20 mt-8 pt-8 text-center text-neutral-foreground/60">
-            <p>© 2025 FourSight Nigeria. All rights reserved.</p>
+            <p>© 2025 FourSight. All rights reserved.</p>
           </div>
         </div>
       </footer>
