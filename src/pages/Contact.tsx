@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { z } from 'zod';
+import Seo from '@/components/Seo';
 
 // Security: Input validation schema
 const contactSchema = z.object({
@@ -188,6 +189,11 @@ const Contact = () => {
 
   return (
     <div className="py-20">
+      <Seo
+        title="Contact FourSight — Start Your Creative Project"
+        description="Get in touch with FourSight by email or WhatsApp to start a graphic design, web, video, or marketing project."
+        path="/contact"
+      />
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">

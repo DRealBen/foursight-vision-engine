@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Eye, Users, Target, Lightbulb, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import Seo from '@/components/Seo';
 
 const About = () => {
   const values = [
@@ -30,6 +31,11 @@ const About = () => {
 
   return (
     <div className="py-20">
+      <Seo
+        title="About FourSight — Vision, Values & Team"
+        description="FourSight is a creative studio built on vision, innovation, and results. Learn how we partner with clients to turn ideas into brands."
+        path="/about"
+      />
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">

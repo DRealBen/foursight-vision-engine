@@ -7,6 +7,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import Seo from '@/components/Seo';
 
 const Services = () => {
   const currentServices = [
@@ -98,6 +99,23 @@ const Services = () => {
 
   return (
     <div className="py-20">
+      <Seo
+        title="Services — Graphic Design, Web, Video & Marketing | FourSight"
+        description="Explore FourSight's creative services: graphic design, web design, video editing, and digital marketing. Clear pricing and delivery times."
+        path="/services"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          provider: { '@type': 'Organization', name: 'FourSight' },
+          areaServed: 'Worldwide',
+          serviceType: [
+            'Graphic Design',
+            'Web Design',
+            'Video Editing',
+            'Digital Marketing',
+          ],
+        }}
+      />
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
