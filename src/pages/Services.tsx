@@ -131,9 +131,9 @@ const Services = () => {
                       </Badge>
                     </div>
                     
-                    <h3 className="text-3xl md:text-4xl font-bold mb-4">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4">
                       {service.title}
-                    </h3>
+                    </h2>
                     
                     <p className="text-lg text-muted-foreground mb-6">
                       {service.description}
@@ -163,7 +163,7 @@ const Services = () => {
                   </div>
                   
                   <div>
-                    <h4 className="text-2xl font-semibold mb-6">What's Included:</h4>
+                    <h3 className="text-2xl font-semibold mb-6">What's Included:</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {service.features.map((feature, index) => (
                         <div 
@@ -219,7 +219,7 @@ const Services = () => {
               </CardHeader>
               
               <CardContent>
-                <h4 className="font-semibold mb-3">Features:</h4>
+                <h3 className="font-semibold mb-3">Features:</h3>
                 <ul className="space-y-2">
                   <li className="flex items-center gap-2 text-sm">
                     <div className="w-1.5 h-1.5 bg-accent rounded-full"></div>

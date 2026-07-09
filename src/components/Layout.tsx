@@ -67,17 +67,17 @@ const Layout = ({
                 </Link>)}
               
               {/* Theme Toggle */}
-              <Button variant="outline" size="icon" onClick={toggleTheme} className="smooth-transition hover:shadow-glow">
+              <Button variant="outline" size="icon" onClick={toggleTheme} aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'} className="smooth-transition hover:shadow-glow">
                 {isDark ? <Sun size={18} /> : <Moon size={18} />}
               </Button>
             </div>
 
             {/* Mobile Menu Button */}
             <div className="md:hidden flex items-center space-x-2">
-              <Button variant="outline" size="icon" onClick={toggleTheme} className="smooth-transition">
+              <Button variant="outline" size="icon" onClick={toggleTheme} aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'} className="smooth-transition">
                 {isDark ? <Sun size={18} /> : <Moon size={18} />}
               </Button>
-              <Button variant="outline" size="icon" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="smooth-transition">
+              <Button variant="outline" size="icon" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label={isMobileMenuOpen ? 'Close main menu' : 'Open main menu'} aria-expanded={isMobileMenuOpen} className="smooth-transition">
                 {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
               </Button>
             </div>
